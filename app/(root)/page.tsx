@@ -41,17 +41,15 @@ export default async function LandingPage() {
         </div>
       </div>
 
-      <div>
-        <div className="grid grid-cols-2 gird-rows-1 h-screen">
+      <div className="min-h-screen overflow-auto h-screen">
+        <div className="grid grid-cols-2 gird-rows-1 h-auto">
           <div></div>
-          <div>
-            {/* <Code code={landingPageExample} showLineNumbers={false} /> */}
-          </div>
+          <div></div>
         </div>
 
         <div
           id="pricing"
-          className="h-screen pt-[calc(91px+1.4rem)] p-[1.4rem]"
+          className="h-screen py-[calc(91px+1.4rem)] p-[1.4rem]"
         >
           <div className="max-w-7xl mx-auto">
             <h2 className="text-white text-center text-7xl py-24 font-bold">
@@ -64,7 +62,7 @@ export default async function LandingPage() {
                 <h3 className="text-[2.625rem] leading-10 font-bold">Free</h3>
                 <p className="text-stone-800">
                   Free plan for all users. Use will need to verify your payment
-                  method to prevent abuse.
+                  method to prevent abuse. *
                 </p>
 
                 <ul className="flex flex-col space-y-3">
@@ -93,8 +91,8 @@ export default async function LandingPage() {
                 <span>Weekly</span>
                 <h3 className="text-[2.625rem] leading-10 font-bold">Pro</h3>
                 <p className="text-stone-800">
-                  Free plan for all users. Use will need to verify your payment
-                  method to prevent abuse.
+                  Ideal for small to start-ups. Use will need to verify your
+                  payment method to prevent abuse. *
                 </p>
 
                 <ul className="flex flex-col space-y-3">
@@ -125,8 +123,8 @@ export default async function LandingPage() {
                   Enterprise
                 </h3>
                 <p className="text-stone-800">
-                  Free plan for all users. Use will need to verify your payment
-                  method to prevent abuse.
+                  Ideal for fast-paced development teams. Payment verification
+                  required to prevent abuse. *
                 </p>
 
                 <ul className="flex flex-col space-y-3">
