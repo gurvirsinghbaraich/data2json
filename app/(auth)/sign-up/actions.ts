@@ -20,5 +20,5 @@ export async function emailSignUp(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  return redirect("/");
+  return redirect("/dashboard");
 }
