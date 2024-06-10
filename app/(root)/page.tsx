@@ -41,7 +41,7 @@ export default async function LandingPage() {
         </div>
       </div>
 
-      <div className="min-h-screen overflow-auto h-screen">
+      <div className="overflow-auto h-full">
         <div className="grid grid-cols-2 gird-rows-1 h-auto">
           <div></div>
           <div></div>
@@ -49,14 +49,14 @@ export default async function LandingPage() {
 
         <div
           id="pricing"
-          className="h-screen py-[calc(91px+1.4rem)] p-[1.4rem]"
+          className="md:h-screen md:scale-125 py-[calc(91px+1.4rem)] p-[1.4rem]"
         >
-          <div className="max-w-7xl mx-auto">
+          <div className="w-max md:max-w-7xl mx-auto">
             <h2 className="text-white text-center text-7xl py-24 font-bold">
               Pricing
             </h2>
 
-            <div className="flex items-center space-x-[1.4rem] mx-auto w-max">
+            <div className="flex items-center space-y-[1.4rem] md:space-y-0 md:space-x-[1.4rem] mx-auto w-max flex-col md:flex-row">
               <div className="max-w-xs bg-[#f2b2d7] p-[1.4rem] rounded-lg flex flex-col space-y-[1.4rem]">
                 <span>Simple</span>
                 <h3 className="text-[2.625rem] leading-10 font-bold">Free</h3>
