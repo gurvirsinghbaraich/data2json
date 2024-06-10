@@ -7,7 +7,7 @@ export default async function SignUpPage() {
   const { data } = await createSupabaseClient().auth.getUser();
 
   if (data.user) {
-    return redirect("/");
+    return redirect("/dashboard");
   }
 
   return (

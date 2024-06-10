@@ -44,3 +44,19 @@ export const exampleCodeForStep3 = `curl -X POST ${API_URL} \\
     }
   }'
 `;
+export const landingPageExample = `curl -X POST ${API_URL} \\ 
+  -H "X-API-KEY: {{YOUR_API_KEY}}" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "input": "[{\\"id\\":1,\\"name\\":\\"Wireless Mouse\\",\\"description\\":\\"A smooth and responsive wireless mouse.\\",\\"price\\":25.99,\\"category\\":\\"Electronics\\",\\"in_stock\\":true},{\\"id\\":3,\\"name\\":\\"Mechanical Keyboard\\",\\"description\\":\\"A durable mechanical keyboard with customizable backlight.\\",\\"price\\":49.99,\\"category\\":\\"Computers\\",\\"in_stock\\":true}]",
+    "format": {
+      "products": [
+        {
+          "price": "\${{ price }}",
+          "name": "{{name}} - <truncate 0...48>{{description}}..."
+        }
+      ],
+      "stock_cost": "<sumof as string>\${{ price }}"
+    }
+  }'
+`;

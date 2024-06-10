@@ -13,7 +13,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const { data } = await createSupabaseClient().auth.getUser();
 
   if (data.user) {
-    return redirect("/");
+    return redirect("/dashboard");
   }
 
   return (
