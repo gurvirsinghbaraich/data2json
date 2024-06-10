@@ -16,10 +16,6 @@ jobs:
         node-version: [20.14.0]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-    env:
-      SUPABASE_URL: ${{secrets.SUPABASE_URL}}
-      SUPABASE_API_KEY: ${{secrets.SUPABASE_API_KEY}}
-
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
@@ -28,7 +24,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+
+    - name: Make .env file
+      run: |
+        touch .env
+        echo SUPABASE_URL=${{ secrets.SUPABASE_URL }} >> .env
+        echo SUPABASE_API_KEY=${{ secrets.SUPABASE_API_KEY }} >> .env
+
     - run: npm run build --if-present
+
     - name: Change Directory
       run: cd /home/github/actions-runner/_work/data2json/data2json
     - run: pm2 restart 0
