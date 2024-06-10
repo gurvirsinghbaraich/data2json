@@ -45,7 +45,7 @@ export default async function DashboardLayout({
               </div>
             </Link>
 
-            <Link href={"/usage"}>
+            <Link href={"/dashboard/usage"}>
               <div className="w-full text-white flex space-x-[0.35rem] items-center bg-stone-900 hover:bg-stone-800 p-3 rounded">
                 <MdDataUsage fontSize={24} />
                 <span className="text-[22.4px]">Usage</span>
