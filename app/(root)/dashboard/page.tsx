@@ -1,4 +1,4 @@
-import Code from "@/components/Code";
+import Code from "@/components/dashboard/Code";
 import { exampleCodeForStep2, exampleCodeForStep3 } from "@/examples/steps";
 import { createSupabaseClient } from "@/utils/supabase";
 import { redirect } from "next/navigation";

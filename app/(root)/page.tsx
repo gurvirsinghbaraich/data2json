@@ -1,4 +1,4 @@
-import Code from "@/components/Code";
+import Code from "@/components/dashboard/Code";
 import {
   landingPageFormatSchemaExample,
   landingPageRawDataExample,

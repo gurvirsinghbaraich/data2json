@@ -1,17 +1,17 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-type BreadcrumbProps = {
-  currentUrl: string;
-};
+export default function Breadcrumb() {
+  const pathname = usePathname();
 
-export default function Breadcrumb(props: BreadcrumbProps) {
   const createUrls = (): { name: string; url: string }[] => {
     const urls: { name: string; url: string }[] = [];
-    const breadcrumbs = props.currentUrl.split("/");
+    const breadcrumbs = pathname.split("/");
 
     breadcrumbs.forEach((breadcrumb, idx) => {
       urls.push({
-        name: breadcrumb,
+        name: breadcrumb.replace(/-/gm, " "),
         url: breadcrumbs.slice(0, idx + 1).join("/"),
       });
     });
@@ -24,7 +24,7 @@ export default function Breadcrumb(props: BreadcrumbProps) {
       <h1 className="text-[22.4px] text-white flex space-x-[0.7rem] items-center h-full">
         {createUrls().map((breadcrumb, idx) => {
           return (
-            <>
+            <div className="flex space-x-[0.7rem] items-center" key={idx}>
               {idx === 0 ? null : (
                 <span className="text-stone-700 text-[32px] font-light">/</span>
               )}
@@ -32,7 +32,7 @@ export default function Breadcrumb(props: BreadcrumbProps) {
               <Link className="underline capitalize" href={breadcrumb.url}>
                 {breadcrumb.name}
               </Link>
-            </>
+            </div>
           );
         })}
       </h1>

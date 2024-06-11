@@ -1,12 +1,8 @@
-import Breadcrumb from "@/components/Breadcrumb";
+import Breadcrumb from "@/components/dashboard/Breadcrumb";
 import UsageChart from "@/components/UsageChart";
 import { createSupabaseClient } from "@/utils/supabase";
 import moment from "moment";
 import { redirect } from "next/navigation";
-
-// const UsageChart = dynamic(() => import("@/components/UsageChart"), {
-//   ssr: false,
-// });
 
 export default async function UsagePage() {
   const supabase = createSupabaseClient();
@@ -24,7 +20,7 @@ export default async function UsagePage() {
 
   return (
     <div>
-      <Breadcrumb currentUrl="/dashboard/usage" />
+      <Breadcrumb />
       <div className="p-[5.6rem] w-full h-full overflow-hidden overflow-y-auto">
         <UsageChart
           tokensUsed={tokensUsed!.map((token) => ({
