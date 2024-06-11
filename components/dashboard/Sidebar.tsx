@@ -66,31 +66,27 @@ export default function Sidebar({ data }: SidebarProps) {
           </Link>
         </div>
 
-        <Link href={"/dashboard/settings"}>
+        <div
+          className={cn(
+            "border-t border-stone-700 text-white overflow-hidden",
+            sidebarCollapsed ? "py-[1.4rem] flex justify-center" : "p-[1.4rem]"
+          )}
+        >
           <div
-            className={cn(
-              "border-t border-stone-700 text-white overflow-hidden",
-              sidebarCollapsed
-                ? "py-[1.4rem] flex justify-center"
-                : "p-[1.4rem]"
-            )}
+            onClick={() => setSidebarCollapsed((a) => !a)}
+            className="flex items-center space-x-[0.7rem] cursor-pointer"
           >
-            <div
-              onClick={() => setSidebarCollapsed((a) => !a)}
-              className="flex items-center space-x-[0.7rem] cursor-pointer"
-            >
-              {sidebarCollapsed ? (
-                <RiExpandRightLine size={24} />
-              ) : (
-                <RiExpandLeftLine size={24} />
-              )}
+            {sidebarCollapsed ? (
+              <RiExpandRightLine size={24} />
+            ) : (
+              <RiExpandLeftLine size={24} />
+            )}
 
-              {!sidebarCollapsed && (
-                <span className="text-[22.4px]">Collapse</span>
-              )}
-            </div>
+            {!sidebarCollapsed && (
+              <span className="text-[22.4px]">Collapse</span>
+            )}
           </div>
-        </Link>
+        </div>
       </div>
     </div>
   );
