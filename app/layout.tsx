@@ -1,3 +1,4 @@
+import AnalyticsProvider from "@/providers/AnalyticsProvider";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -23,7 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={spaceGrotesk.className}>{children}</body>
+      <AnalyticsProvider>
+        <body className={spaceGrotesk.className}>{children}</body>
+      </AnalyticsProvider>
     </html>
   );
 }
