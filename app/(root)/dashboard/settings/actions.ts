@@ -1,9 +1,10 @@
+"use server";
+
 import { createSupabaseClient } from "@/utils/supabase";
 import { generateApiKey } from "generate-api-key";
 import { revalidatePath } from "next/cache";
-import { NextResponse } from "next/server";
 
-export async function POST() {
+export async function generateAPIKey() {
   const supabase = await createSupabaseClient();
   const { data, error } = await supabase.auth.getUser();
 
@@ -17,10 +18,8 @@ export async function POST() {
     .eq("user_id", data.user.id)
     .single();
 
-  let apiKey = key?.key;
-
-  if (!apiKey) {
-    apiKey = generateApiKey({
+  if (!key?.key) {
+    let apiKey = generateApiKey({
       method: "string",
       min: 24,
       max: 32,
@@ -37,10 +36,8 @@ export async function POST() {
     }
 
     revalidatePath("/", "layout");
-    revalidatePath("/", "page");
-  }
 
-  return NextResponse.json({
-    apiKey: apiKey,
-  });
+    revalidatePath("/", "page");
+    revalidatePath("/dashboard/settings", "page");
+  }
 }

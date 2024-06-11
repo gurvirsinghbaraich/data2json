@@ -1,10 +1,11 @@
+import { Database } from "@/lib/database.types";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
 export function createSupabaseClient() {
   const cookieStore = cookies();
 
-  return createServerClient(
+  return createServerClient<Database>(
     process.env.SUPABASE_URL!,
     process.env.SUPABASE_API_KEY!,
     {
