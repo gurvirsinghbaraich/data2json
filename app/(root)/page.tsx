@@ -51,7 +51,7 @@ export default async function LandingPage() {
         </div>
       </div>
 
-      <div className="overflow-y-auto overflow-hidden h-full">
+      <div className="overflow-y-auto pb-32 overflow-hidden h-full">
         <div className="grid grid-cols-1 gird-rows-1 h-auto min-h-screen">
           <div className="lg:py-48 py-24 bg-slate-900">
             <div className="w-max mx-auto flex space-y-8 flex-col lg:w-auto max-w-[80%]">
