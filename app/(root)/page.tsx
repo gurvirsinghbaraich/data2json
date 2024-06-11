@@ -49,14 +49,14 @@ export default async function LandingPage() {
 
         <div
           id="pricing"
-          className="md:h-screen md:scale-125 py-[calc(91px+1.4rem)] p-[1.4rem]"
+          className="xl:scale-125 py-[calc(91px+1.4rem)] p-[1.4rem]"
         >
           <div className="w-max md:max-w-7xl mx-auto">
             <h2 className="text-white text-center text-7xl py-24 font-bold">
               Pricing
             </h2>
 
-            <div className="flex items-center space-y-[1.4rem] md:space-y-0 md:space-x-[1.4rem] mx-auto w-max flex-col md:flex-row">
+            <div className="flex items-center md:grid md:grid-cols-2 lg:flex md:gap-[1.4rem] lg:gap-0 space-y-[1.4rem] md:space-y-0 lg:space-x-[1.4rem] mx-auto w-max flex-col lg:flex-row">
               <div className="max-w-xs bg-[#f2b2d7] p-[1.4rem] rounded-lg flex flex-col space-y-[1.4rem]">
                 <span>Simple</span>
                 <h3 className="text-[2.625rem] leading-10 font-bold">Free</h3>
