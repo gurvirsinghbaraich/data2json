@@ -1,7 +1,17 @@
+import Code from "@/components/Code";
+import {
+  landingPageFormatSchemaExample,
+  landingPageRawDataExample,
+  landingPageResponseExample,
+} from "@/examples/steps";
 import { createSupabaseClient } from "@/utils/supabase";
 import millify from "millify";
 import Link from "next/link";
-import { FaCircleCheck } from "react-icons/fa6";
+import {
+  FaArrowDownLong,
+  FaArrowRightLong,
+  FaCircleCheck,
+} from "react-icons/fa6";
 import { LuFileJson } from "react-icons/lu";
 
 export default async function LandingPage() {
@@ -41,16 +51,111 @@ export default async function LandingPage() {
         </div>
       </div>
 
-      <div className="overflow-auto h-full">
-        <div className="grid grid-cols-2 gird-rows-1 h-auto">
-          <div></div>
-          <div></div>
+      <div className="overflow-y-auto overflow-hidden h-full">
+        <div className="grid grid-cols-1 gird-rows-1 h-auto min-h-screen">
+          <div className="py-48 bg-slate-900">
+            <div className="w-max mx-auto flex space-y-8 flex-col">
+              <h1 className="text-white text-7xl font-bold">
+                Effortlessly Convert Raw Data to Dynamic JSON.
+              </h1>
+              <p className="text-2xl text-stone-200">
+                Never worry about processing data again with our reliable and
+                scalable API for developers.
+              </p>
+            </div>
+          </div>
+
+          <div className="w-max mx-auto border rounded-full my-12 p-4">
+            <FaArrowDownLong className="text-white" size={24} />
+          </div>
+
+          <div className="grid w-full gap-4 grid-cols-[1fr_50px_1fr_50px_1fr] h-max grid-rows-1 px-[5.6rem]">
+            <div className="w-full">
+              <div className="p-4 border-b bg-stone-100 text-center border-stone-400">
+                Input Raw Data
+              </div>
+              <div className="flex border-b border-stone-400 bg-stone-100">
+                <div className="border-r border-stone-400 p-3 py-4">
+                  <span className="bg-orange-400 text-white p-2">POST</span>
+                </div>
+                <div className="p-4">
+                  <span className="underline">
+                    https://api.data2json.xyz/v1
+                  </span>
+                </div>
+              </div>
+              <div className="h-auto overflow-x-hidden overflow-y-auto bg-white">
+                <Code
+                  theme={"github"}
+                  code={landingPageRawDataExample}
+                  showLineNumbers={false}
+                />
+              </div>
+            </div>
+
+            <div className="w-full h-full flex items-center justify-center">
+              <FaArrowRightLong className="text-white" size={32} />
+            </div>
+
+            <div className="w-full">
+              <div className="p-4 bg-stone-100 border-b text-center border-stone-400">
+                Specify Format Schema
+              </div>
+              <div className="flex border-b bg-stone-100 border-stone-400">
+                <div className="border-r border-stone-400 p-3 py-4">
+                  <span className="bg-orange-400 text-white p-2">POST</span>
+                </div>
+                <div className="p-4">
+                  <span className="underline">
+                    https://api.data2json.xyz/v1
+                  </span>
+                </div>
+              </div>
+              <div className="h-auto overflow-x-hidden overflow-y-auto">
+                <Code
+                  theme={"github"}
+                  code={landingPageFormatSchemaExample}
+                  showLineNumbers={false}
+                />
+              </div>
+            </div>
+
+            <div className="w-full h-full flex items-center justify-center">
+              <FaArrowRightLong className="text-white" size={32} />
+            </div>
+
+            <div className="max-w-lg w-full">
+              <div className="p-4 border-b text-center border-stone-400 bg-stone-100">
+                API Response
+              </div>
+              <div className="flex border-b border-stone-400 bg-stone-100">
+                <div className="border-r border-stone-400 p-3 py-4">
+                  <span className="bg-orange-400 text-white p-2">POST</span>
+                </div>
+                <div className="p-4">
+                  <span className="underline">
+                    https://api.data2json.xyz/v1
+                  </span>
+                </div>
+              </div>
+              <div className="h-auto overflow-x-hidden overflow-y-auto bg-white">
+                <Code
+                  theme={"github"}
+                  code={landingPageResponseExample}
+                  showLineNumbers={false}
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div
-          id="pricing"
-          className="xl:scale-125 py-[calc(91px+1.4rem)] p-[1.4rem]"
-        >
+        <Link href={"/#pricing"}>
+          <div className="w-max mx-auto border rounded-full my-12 p-4">
+            <FaArrowDownLong className="text-white" size={24} />
+          </div>
+        </Link>
+
+        <div id="pricing" className="xl:scale-125 my-[calc(91px)] p-[1.4rem]">
           <div className="w-max md:max-w-7xl mx-auto">
             <h2 className="text-white text-center text-7xl py-24 font-bold">
               Pricing

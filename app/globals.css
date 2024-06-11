@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+
   code {
     @apply pointer-events-auto;
   }

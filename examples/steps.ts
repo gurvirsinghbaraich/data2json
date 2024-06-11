@@ -27,7 +27,7 @@ await fetch(API_URL, {
   .then(data => console.log(data));
 `;
 
-export const exampleCodeForStep3 = `curl -X POST ${API_URL} \\     
+export const exampleCodeForStep3 = `curl -X POST ${API_URL}  \\   
   -H "X-API-KEY: {{YOUR_API_KEY}}" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -44,19 +44,46 @@ export const exampleCodeForStep3 = `curl -X POST ${API_URL} \\
     }
   }'
 `;
-export const landingPageExample = `curl -X POST ${API_URL} \\ 
-  -H "X-API-KEY: {{YOUR_API_KEY}}" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "input": "[{\\"id\\":1,\\"name\\":\\"Wireless Mouse\\",\\"description\\":\\"A smooth and responsive wireless mouse.\\",\\"price\\":25.99,\\"category\\":\\"Electronics\\",\\"in_stock\\":true},{\\"id\\":3,\\"name\\":\\"Mechanical Keyboard\\",\\"description\\":\\"A durable mechanical keyboard with customizable backlight.\\",\\"price\\":49.99,\\"category\\":\\"Computers\\",\\"in_stock\\":true}]",
-    "format": {
-      "products": [
-        {
-          "price": "\${{ price }}",
-          "name": "{{name}} - <truncate 0...48>{{description}}..."
-        }
-      ],
-      "stock_cost": "<sumof as string>\${{ price }}"
+export const landingPageRawDataExample = `[
+  {
+    "id":1,
+    "n":"Wireless Mouse",
+    "desc":"A smooth and responsive wireless mouse.",
+    "price":25.99
+  },
+  {
+    "id":3,
+    "n":"Mechanical Keyboard",
+    "desc":"A durable mechanical keyboard with customizable backlight.",
+    "price":49.99
+  }
+]`;
+
+export const landingPageFormatSchemaExample = `{
+  "products": [
+    {
+      "price": "\${{price}}",
+      "name": 
+        "{{n}} - <truncate 0...48>{{desc}}..."
     }
-  }'
-`;
+  ],
+  "stock_cost": "<sumof as string>\${{price}}"
+}`;
+
+export const landingPageResponseExample = `{
+  "error": null,
+  "data": {
+    "products": [
+      {
+        "price": "$25.99",
+        "name": "Wireless Mouse - A smooth and responsive wireless mouse..."
+      },
+      {
+        "price": "$49.99",
+        "name": "Mechanical Keyboard - A durable mechanical keyboard ..."
+      }
+    ],
+    "stock_cost": "$75.98"
+  },
+  "tokensUsed": 494
+}`;
