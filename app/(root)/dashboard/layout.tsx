@@ -38,7 +38,7 @@ export default async function DashboardLayout({
 
         <div className="p-[1.4rem] grid grid-cols-1 grid-rows-[1fr_60px]">
           <div className="flex flex-col space-y-[1.4rem]">
-            <Link href={"/"}>
+            <Link href={"/dashboard"}>
               <div className="w-full text-white flex space-x-[0.35rem] items-center bg-stone-900 hover:bg-stone-800 p-3 rounded">
                 <MdDashboard fontSize={24} />
                 <span className="text-[22.4px]">Dashboard</span>

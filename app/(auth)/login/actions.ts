@@ -19,6 +19,6 @@ export async function emailLogin(formData: FormData) {
     return redirect("/login?error=INVALID_CREDENTIALS");
   }
 
-  revalidatePath("/", "layout");
+  revalidatePath("/dashboard", "layout");
   return redirect("/dashboard");
 }
