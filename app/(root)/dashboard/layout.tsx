@@ -1,7 +1,7 @@
-import Settings from "@/components/Settings";
 import { createSupabaseClient } from "@/utils/supabase";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { FaCog } from "react-icons/fa";
 import { MdDashboard, MdDataUsage } from "react-icons/md";
 
 type DashboardLayoutProps = {
@@ -52,11 +52,15 @@ export default async function DashboardLayout({
               </div>
             </Link>
           </div>
-          <Settings
-            apiKey={apiKey?.key}
-            logoutUser={"/api/logout"}
-            user={data.user}
-          />
+
+          <Link href={"/dashboard/settings"}>
+            <div className="border-t border-stone-700 text-white p-[1.4rem] overflow-hidden">
+              <div className="flex items-center space-x-[0.7rem] cursor-pointer">
+                <FaCog size={24} />
+                <span className="text-[22.4px]">Settings</span>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="min-h-screen overflow-y-auto">{children}</div>
