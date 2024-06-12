@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import { createSupabaseClient } from "@/utils/supabase";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -63,12 +64,12 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
             </Link>
           </span>
         </div>
-        <button
+        <Button
           formAction={emailLogin}
-          className="bg-stone-800 hover:bg-stone-900 p-3 rounded-md cursor-pointer text-white"
+          className="bg-stone-800 hover:bg-stone-900 rounded-md text-white"
         >
           Login
-        </button>
+        </Button>
       </form>
     </div>
   );

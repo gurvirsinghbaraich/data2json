@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import Code from "@/components/dashboard/Code";
 import {
   landingPageFormatSchemaExample,
@@ -38,13 +39,11 @@ export default async function LandingPage() {
 
             {data.user ? (
               <Link href={"/dashboard"}>
-                <button className="bg-white p-3 text-stone-950">
-                  Dashboard
-                </button>
+                <Button className="bg-white text-stone-950">Dashboard</Button>
               </Link>
             ) : (
               <Link href={"/login"}>
-                <button className="bg-white p-3 text-stone-950">Login</button>
+                <Button className="bg-white text-stone-950">Login</Button>
               </Link>
             )}
           </div>
@@ -186,9 +185,9 @@ export default async function LandingPage() {
                   </li>
                 </ul>
 
-                <button className="bg-stone-950 text-white p-3 w-max rounded">
+                <Button className="bg-stone-950 text-white w-max rounded">
                   Continue with $0.015/month
-                </button>
+                </Button>
               </div>
 
               <div className="max-w-xs bg-[#7fe1d6] p-[1.4rem] rounded-lg flex flex-col space-y-[1.4rem]">
@@ -220,9 +219,9 @@ export default async function LandingPage() {
                   </li>
                 </ul>
 
-                <button className="bg-stone-950 text-white p-3 w-max rounded">
+                <Button className="bg-stone-950 text-white w-max rounded">
                   Continue with $3/week
-                </button>
+                </Button>
               </div>
 
               <div className="max-w-xs bg-[#febc00] p-[1.4rem] rounded-lg flex flex-col space-y-[1.4rem]">
@@ -251,9 +250,9 @@ export default async function LandingPage() {
                   </li>
                 </ul>
 
-                <button className="bg-stone-950 text-white p-3 w-max rounded">
+                <Button className="bg-stone-950 text-white w-max rounded">
                   Continue with $20/month
-                </button>
+                </Button>
               </div>
             </div>
           </div>

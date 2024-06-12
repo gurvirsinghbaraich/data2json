@@ -1,6 +1,7 @@
 import AnalyticsProvider from "@/providers/AnalyticsProvider";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
@@ -25,7 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AnalyticsProvider>
-        <body className={spaceGrotesk.className}>{children}</body>
+        <body className={spaceGrotesk.className}>
+          <Toaster />
+          {children}
+        </body>
       </AnalyticsProvider>
     </html>
   );

@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import Breadcrumb from "@/components/dashboard/Breadcrumb";
 import { createSupabaseClient } from "@/utils/supabase";
 import { redirect } from "next/navigation";
@@ -108,12 +109,12 @@ export default async function SettingsPage() {
                   />
                 ) : (
                   <form>
-                    <button
+                    <Button
                       formAction={generateAPIKey}
-                      className="bg-orange-600/80 p-3 text-white cursor-pointer w-full"
+                      className="bg-orange-600/80 text-white w-full"
                     >
                       Generate API Key
-                    </button>
+                    </Button>
                   </form>
                 )}
               </div>
@@ -123,12 +124,12 @@ export default async function SettingsPage() {
       </div>
 
       <form>
-        <button
+        <Button
           formAction={logoutUser}
-          className="fixed right-5 bottom-5 bg-red-500/75 p-3 text-white"
+          className="fixed right-5 bottom-5 bg-red-500/75 text-white"
         >
           Logout
-        </button>
+        </Button>
       </form>
     </div>
   );

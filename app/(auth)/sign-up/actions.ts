@@ -3,24 +3,62 @@
 import { createSupabaseClient } from "@/utils/supabase";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import {
+  ValiError,
+  isValiError,
+  minLength,
+  object,
+  parse,
+  pipe,
+  string,
+} from "valibot";
 
 export async function emailSignUp(formData: FormData) {
   const supabase = createSupabaseClient();
-
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-
-  const { error } = await supabase.auth.signUp({
-    email,
-    password,
+  const schema = object({
+    email: pipe(string(), minLength(1, "Required.")),
+    password: pipe(string(), minLength(1, "Required.")),
   });
 
-  if (error) {
-    return redirect("/sign-up");
+  try {
+    const { email, password } = parse(schema, {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    });
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (error) {
+      return redirect("/sign-up?error=" + error.message);
+    }
+
+    revalidatePath("/dashboard", "layout");
+    revalidatePath("/dashboard", "page");
+
+    return redirect("/dashboard");
+  } catch (error) {
+    const issues = {
+      email: "",
+      password: "",
+    };
+
+    if (isValiError(error)) {
+      const issues = {
+        email: "",
+        password: "",
+      };
+
+      (error as ValiError<typeof schema>).issues.map((issue) => {
+        // @ts-ignore
+        issues[issue.path![0].key] = issue.message;
+      });
+
+      return redirect(`/sign-up?_email=${issues.email}&_password=${issues.password}`);
+    }
+
+    return redirect("/sign-up?error=" + (error as Error).message);
   }
-
-  revalidatePath("/dashboard", "layout");
-  revalidatePath("/dashboard", "page");
-
-  return redirect("/dashboard");
 }
