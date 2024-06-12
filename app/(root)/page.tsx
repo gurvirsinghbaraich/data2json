@@ -263,11 +263,22 @@ export default async function LandingPage() {
       <footer className="border-t border-stone-700 p-[1.4rem] flex flex-col md:flex-row items-center justify-between">
         <div className="text-white">Copyright &copy; 2024.</div>
         <div className="text-white flex gap-3">
-          <Link href={"/policies/privacy-policy"}>Privacy Policy</Link>
-          <Link href={"/policies/terms-and-conditions"}>
+          <Link
+            href={"/policies/privacy-policy"}
+            className="hover:underline hover:underline-offset-2 hover:decoration-dotted"
+          >
+            Privacy Policy
+          </Link>
+          <Link
+            href={"/policies/terms-and-conditions"}
+            className="hover:underline hover:underline-offset-2 hover:decoration-dotted"
+          >
             Terms &amp; Conditions
           </Link>
-          <Link href={"/policies/cancellation-and-refund"}>
+          <Link
+            href={"/policies/cancellation-and-refund"}
+            className="hover:underline hover:underline-offset-2 hover:decoration-dotted"
+          >
             Cancellation &amp; Refund
           </Link>
         </div>

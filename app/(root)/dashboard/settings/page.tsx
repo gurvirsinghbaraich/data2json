@@ -1,6 +1,7 @@
 import Breadcrumb from "@/components/dashboard/Breadcrumb";
 import { createSupabaseClient } from "@/utils/supabase";
 import { redirect } from "next/navigation";
+import { logoutUser } from "../../action";
 import { generateAPIKey } from "./actions";
 
 export default async function SettingsPage() {
@@ -120,6 +121,15 @@ export default async function SettingsPage() {
           </div>
         </div>
       </div>
+
+      <form>
+        <button
+          formAction={logoutUser}
+          className="fixed right-5 bottom-5 bg-red-500/75 p-3 text-white"
+        >
+          Logout
+        </button>
+      </form>
     </div>
   );
 }

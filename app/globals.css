@@ -10,8 +10,4 @@
   code {
     @apply pointer-events-auto;
   }
-
-  a {
-    @apply hover:underline hover:underline-offset-2 hover:decoration-dotted;
-  }
 }
