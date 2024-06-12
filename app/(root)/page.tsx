@@ -18,8 +18,8 @@ export default async function LandingPage() {
   const { data } = await createSupabaseClient().auth.getUser();
 
   return (
-    <div className="w-screen h-screen overflow-hidden bg-stone-950">
-      <div className="w-full max-h-[91px] min-h-[91px] overflow-hidden text-white">
+    <div className="max-w-screen h-auto overflow-x-hidden bg-stone-950">
+      <div className="w-full max-h-[91px] min-h-[91px] text-white">
         <div className="flex items-center justify-between z-20 bg-stone-950 fixed top-[45.5px] -translate-y-1/2 right-0 left-0 border-b p-[1.4rem] border-stone-700">
           <Link href={"/"}>
             <div className="flex items-center space-x-[0.7rem]">
@@ -51,7 +51,7 @@ export default async function LandingPage() {
         </div>
       </div>
 
-      <div className="overflow-y-auto pb-32 overflow-hidden h-full">
+      <div className="pb-32 h-full">
         <div className="grid grid-cols-1 gird-rows-1 h-auto min-h-screen">
           <div className="lg:py-48 py-24 bg-slate-900">
             <div className="w-max mx-auto flex space-y-8 flex-col lg:w-auto max-w-[80%]">
@@ -259,6 +259,19 @@ export default async function LandingPage() {
           </div>
         </div>
       </div>
+
+      <footer className="border-t border-stone-700 p-[1.4rem] flex flex-col md:flex-row items-center justify-between">
+        <div className="text-white">Copyright &copy; 2024.</div>
+        <div className="text-white flex gap-3">
+          <Link href={"/policies/privacy-policy"}>Privacy Policy</Link>
+          <Link href={"/policies/terms-and-conditions"}>
+            Terms &amp; Conditions
+          </Link>
+          <Link href={"/policies/cancellation-and-refund"}>
+            Cancellation &amp; Refund
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }
