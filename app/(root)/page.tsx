@@ -166,8 +166,7 @@ export default async function LandingPage() {
                 <span>Simple</span>
                 <h3 className="text-[2.625rem] leading-10 font-bold">Free</h3>
                 <p className="text-stone-800">
-                  Free plan for all users. Use will need to verify your payment
-                  method to prevent abuse. *
+                  Free plan for all users, except for the verification fee. *
                 </p>
 
                 <ul className="flex flex-col space-y-3">
@@ -188,16 +187,20 @@ export default async function LandingPage() {
                 </ul>
 
                 <button className="bg-stone-950 text-white p-3 w-max rounded">
-                  Get Started Free
+                  Continue with $0.015/month
                 </button>
               </div>
 
               <div className="max-w-xs bg-[#7fe1d6] p-[1.4rem] rounded-lg flex flex-col space-y-[1.4rem]">
-                <span>Weekly</span>
+                <div className="flex items-center justify-between">
+                  <div>Weekly</div>
+                  <label className="bg-indigo-500 text-white w-max p-2 text-xs rounded animate-pulse">
+                    Most Popular
+                  </label>
+                </div>
                 <h3 className="text-[2.625rem] leading-10 font-bold">Pro</h3>
                 <p className="text-stone-800">
-                  Ideal for small to start-ups. Use will need to verify your
-                  payment method to prevent abuse. *
+                  Ideal for small to start-ups and small businesses.
                 </p>
 
                 <ul className="flex flex-col space-y-3">
@@ -228,8 +231,7 @@ export default async function LandingPage() {
                   Enterprise
                 </h3>
                 <p className="text-stone-800">
-                  Ideal for fast-paced development teams. Payment verification
-                  required to prevent abuse. *
+                  Ideal for fast-paced development teams.
                 </p>
 
                 <ul className="flex flex-col space-y-3">
