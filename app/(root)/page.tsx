@@ -259,24 +259,24 @@ export default async function LandingPage() {
         </div>
       </div>
 
-      <footer className="border-t border-stone-700 p-[1.4rem] flex flex-col md:flex-row items-center justify-between">
+      <footer className="border-t border-stone-700 p-[1.4rem] flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-0">
         <div className="text-white">Copyright &copy; 2024.</div>
-        <div className="text-white flex gap-3">
+        <div className="text-white flex gap-1.5 md:gap-3 flex-col md:flex-row">
           <Link
             href={"/policies/privacy-policy"}
-            className="hover:underline hover:underline-offset-2 hover:decoration-dotted"
+            className="hover:underline underline-offset-2 decoration-dotted underline md:no-underline"
           >
             Privacy Policy
           </Link>
           <Link
             href={"/policies/terms-and-conditions"}
-            className="hover:underline hover:underline-offset-2 hover:decoration-dotted"
+            className="hover:underline underline-offset-2 decoration-dotted underline md:no-underline"
           >
             Terms &amp; Conditions
           </Link>
           <Link
             href={"/policies/cancellation-and-refund"}
-            className="hover:underline hover:underline-offset-2 hover:decoration-dotted"
+            className="hover:underline underline-offset-2 decoration-dotted underline md:no-underline"
           >
             Cancellation &amp; Refund
           </Link>

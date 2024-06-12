@@ -9,10 +9,10 @@ The project is expected to be launched before the end of the current week (*15 J
 - [x] Landing page feels incomplete!
 - [x] Added policies pages for the website.
 - [x] Add logout button somewhere in the website (maybe show a dropdown when clicked on username at the top right)
+- [x] Make the website responsive.
 
 ## Pending Features (Updated: 11-06-2024)
 - [ ] Integrate subscription management system.
-- [ ] Make the website responsive.
 - [ ] No management of the user information.
 - [ ] Ability to revoke or regenerate API keys.
 - [ ] Ability to change pricing plans. 

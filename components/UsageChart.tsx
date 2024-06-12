@@ -107,12 +107,12 @@ export default function UsageChart({ tokensUsed }: UsageChartProps) {
   };
 
   return (
-    <div className="w-full grid lg:grid-cols-2 lg:grid-rows-1 grid-rows-2 grid-cols-1 space-x-[1.4rem]">
-      <div className="flex flex-col space-y-[0.7rem]">
+    <div className="w-full grid lg:grid-cols-2 lg:grid-rows-1 grid-rows-[1fr_1fr] grid-cols-1 gap-[1.4rem]">
+      <div className="flex h-full md:h-auto md:w-full flex-col space-y-[0.7rem]">
         <h4 className="w-full border border-stone-800 text-white bg-stone-900 rounded-md p-[1.05rem] ">
           Hourly
         </h4>
-        <div className="bg-stone-900 p-[1.05rem] rounded-md overflow-hidden h-full border border-stone-800">
+        <div className="bg-stone-900 p-[1.05rem] rounded-md overflow-hidden min-h-48 md:h-full border border-stone-800">
           <Line
             data={{
               labels: [

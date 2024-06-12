@@ -21,7 +21,7 @@ export default function Breadcrumb() {
 
   return (
     <div className="w-full bg-stone-950 max-h-[91px] h-[91px] border-b border-stone-700 p-[1.4rem]">
-      <h1 className="text-[22.4px] text-white flex space-x-[0.7rem] items-center h-full">
+      <h1 className="text-[22.4px] truncate text-white flex space-x-[0.7rem] items-center h-full">
         {createUrls().map((breadcrumb, idx) => {
           return (
             <div className="flex space-x-[0.7rem] items-center" key={idx}>

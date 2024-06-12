@@ -21,7 +21,7 @@ export default async function UsagePage() {
   return (
     <div>
       <Breadcrumb />
-      <div className="p-[5.6rem] w-full h-full overflow-hidden overflow-y-auto">
+      <div className="p-[1.4rem] md:p-[5.6rem] w-full h-full overflow-hidden overflow-y-auto">
         <UsageChart
           tokensUsed={tokensUsed!.map((token) => ({
             id: token.id,
