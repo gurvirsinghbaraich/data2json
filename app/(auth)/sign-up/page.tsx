@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import { SignUpButton } from "@/components/SignUpButton";
 import { createSupabaseClient } from "@/utils/supabase";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -63,6 +63,8 @@ export default async function SignUpPage({
           </div>
         </div>
 
+        <SignUpButton />
+
         <div className="text-xs text-right">
           <span>
             Have an account?{" "}
@@ -71,9 +73,6 @@ export default async function SignUpPage({
             </Link>
           </span>
         </div>
-        <Button className="bg-stone-800 hover:bg-stone-900 rounded-md text-white">
-          Sign Up
-        </Button>
       </form>
     </div>
   );

@@ -1,12 +1,12 @@
-import Button from "@/components/Button";
+import LoginButton from "@/components/LoginButton";
 import { createSupabaseClient } from "@/utils/supabase";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { emailLogin } from "./actions";
 
 type LoginPageProps = {
   searchParams: {
-    error: string;
+    ref?: string;
+    error?: string;
   };
 };
 
@@ -14,7 +14,9 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const { data } = await createSupabaseClient().auth.getUser();
 
   if (data.user) {
-    return redirect("/dashboard");
+    return redirect(
+      "/dashboard" + (searchParams.ref ? `?ref=${searchParams.ref}` : "")
+    );
   }
 
   return (
@@ -56,20 +58,22 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
           </div>
         </div>
 
+        <LoginButton fromProductHunt={searchParams.ref === "producthunt"} />
+
         <div className="text-xs text-right">
           <span>
             Have an account?{" "}
-            <Link href={"/sign-up"} className="underline">
+            <Link
+              href={
+                "/sign-up" +
+                (searchParams.ref ? `?ref=${searchParams.ref}` : "")
+              }
+              className="underline"
+            >
               Sign Up
             </Link>
           </span>
         </div>
-        <Button
-          formAction={emailLogin}
-          className="bg-stone-800 hover:bg-stone-900 rounded-md text-white"
-        >
-          Login
-        </Button>
       </form>
     </div>
   );

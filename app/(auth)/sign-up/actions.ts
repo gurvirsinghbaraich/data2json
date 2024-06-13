@@ -40,11 +40,6 @@ export async function emailSignUp(formData: FormData) {
 
     return redirect("/dashboard");
   } catch (error) {
-    const issues = {
-      email: "",
-      password: "",
-    };
-
     if (isValiError(error)) {
       const issues = {
         email: "",
@@ -56,7 +51,9 @@ export async function emailSignUp(formData: FormData) {
         issues[issue.path![0].key] = issue.message;
       });
 
-      return redirect(`/sign-up?_email=${issues.email}&_password=${issues.password}`);
+      return redirect(
+        `/sign-up?_email=${issues.email}&_password=${issues.password}`
+      );
     }
 
     return redirect("/sign-up?error=" + (error as Error).message);

@@ -2,13 +2,28 @@ import Code from "@/components/dashboard/Code";
 import { exampleCodeForStep2, exampleCodeForStep3 } from "@/examples/steps";
 import { createSupabaseClient } from "@/utils/supabase";
 import { redirect } from "next/navigation";
+import posthog from "posthog-js";
 
-export default async function LandingPage() {
+type LandingPageProps = {
+  searchParams: {
+    ref?: string;
+  };
+};
+
+export default async function LandingPage(props: LandingPageProps) {
   const supabase = createSupabaseClient();
   const { data, error } = await supabase.auth.getUser();
 
   if (error != null) {
     redirect("/login");
+  }
+
+  if (data.user) {
+    posthog.identify(data.user.email);
+  }
+
+  if (props.searchParams.ref === "producthunt") {
+    posthog.capture("ProductHunt User Reached Dashboard");
   }
 
   const { data: apiKey } = await supabase

@@ -8,6 +8,7 @@ import {
 import { createSupabaseClient } from "@/utils/supabase";
 import millify from "millify";
 import Link from "next/link";
+import posthog from "posthog-js";
 import {
   FaArrowDownLong,
   FaArrowRightLong,
@@ -15,7 +16,17 @@ import {
 } from "react-icons/fa6";
 import { LuFileJson } from "react-icons/lu";
 
-export default async function LandingPage() {
+type LoginPageProps = {
+  searchParams: {
+    ref?: string;
+  };
+};
+
+export default async function LandingPage({ searchParams }: LoginPageProps) {
+  if (searchParams.ref === "producthunt") {
+    posthog.capture("ProductHunt Visit");
+  }
+
   const { data } = await createSupabaseClient().auth.getUser();
 
   return (
@@ -38,11 +49,21 @@ export default async function LandingPage() {
             </Link>
 
             {data.user ? (
-              <Link href={"/dashboard"}>
+              <Link
+                href={
+                  "/dashboard" +
+                  (searchParams.ref ? `?ref=${searchParams.ref}` : "")
+                }
+              >
                 <Button className="bg-white text-stone-950">Dashboard</Button>
               </Link>
             ) : (
-              <Link href={"/login"}>
+              <Link
+                href={
+                  "/login" +
+                  (searchParams.ref ? `?ref=${searchParams.ref}` : "")
+                }
+              >
                 <Button className="bg-white text-stone-950">Login</Button>
               </Link>
             )}
