@@ -60,10 +60,6 @@ export async function emailSignUp(formData: FormData) {
         subscription_id: subscription.id,
         plan: plan,
       });
-
-      revalidatePath("/dashboard", "layout");
-      revalidatePath("/dashboard", "page");
-      return redirect(subscription.short_url);
     }
 
     revalidatePath("/dashboard", "layout");
