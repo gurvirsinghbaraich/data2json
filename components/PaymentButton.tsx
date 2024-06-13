@@ -13,24 +13,34 @@ export default function PaymentButton({
   ...props
 }: PaymentButtonProps) {
   const fetchApi = async function () {
-    toast.info("Please wait...");
-    const request = axios.post(props.link, props.payload, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      toast.info("Please wait...");
+      const request = axios.post(props.link, props.payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const response = (await request).data;
-    toast.info("Redirecting to " + response.paymentLink);
+      const response = (await request).data;
 
-    const link = document.createElement("a");
-    link.href = response.paymentLink;
-    link.click();
+      if ("error" in response) {
+        toast.error(response.error);
+      } else {
+        toast.info("Redirecting to " + response.paymentLink);
+
+        const link = document.createElement("a");
+        link.href = response.paymentLink;
+        link.click();
+      }
+    } catch (error) {
+      toast.info("Failed!, Please try again later!");
+    }
   };
 
   return (
     <Button
-      onClick={fetchApi}
+      {...props}
+      onClick={props.disabled ? () => {} : fetchApi}
       className="bg-stone-950 text-white w-max rounded"
     >
       {children}

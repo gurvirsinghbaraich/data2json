@@ -4,6 +4,7 @@ import millify from "millify";
 import { FaCircleCheck } from "react-icons/fa6";
 
 type PricingSectionProps = {
+  plan?: string;
   inDashboard?: boolean;
 };
 
@@ -47,10 +48,13 @@ export default function PricingSection(props: PricingSectionProps) {
             </ul>
 
             <PaymentButton
-              link={"/api/payments/subscribe"}
               payload={{ plan: "free" }}
+              disabled={props.plan == "free"}
+              link={"/api/payments/subscribe"}
             >
-              Continue with $0.015/month
+              {props.plan === "free"
+                ? "Current Plan"
+                : "Continue with $0.015/month"}
             </PaymentButton>
           </div>
 
@@ -84,10 +88,11 @@ export default function PricingSection(props: PricingSectionProps) {
             </ul>
 
             <PaymentButton
+              disabled={props.plan == "pro"}
               link={"/api/payments/subscribe"}
               payload={{ plan: "pro" }}
             >
-              Continue with $3/week
+              {props.plan === "pro" ? "Current Plan" : "Continue with $3/week"}
             </PaymentButton>
           </div>
 
@@ -116,10 +121,13 @@ export default function PricingSection(props: PricingSectionProps) {
             </ul>
 
             <PaymentButton
+              disabled={props.plan == "enterprise"}
               link={"/api/payments/subscribe"}
               payload={{ plan: "enterprise" }}
             >
-              Continue with $20/month
+              {props.plan === "enterprise"
+                ? "Current Plan"
+                : "Continue with $20/month"}
             </PaymentButton>
           </div>
         </div>

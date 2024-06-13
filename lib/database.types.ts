@@ -42,6 +42,7 @@ export type Database = {
         Row: {
           created_at: string
           id: number
+          plan: string
           status: string
           subscription_id: string
           user_id: string
@@ -49,6 +50,7 @@ export type Database = {
         Insert: {
           created_at?: string
           id?: number
+          plan?: string
           status?: string
           subscription_id: string
           user_id: string
@@ -56,6 +58,7 @@ export type Database = {
         Update: {
           created_at?: string
           id?: number
+          plan?: string
           status?: string
           subscription_id?: string
           user_id?: string

@@ -39,10 +39,25 @@ export default async function DashboardLayout({
           .eq("user_id", data.user.id)
           .eq("subscription_id", subscription.subscription_id);
 
-        await supabase.from("tokens").insert({
-          user_id: data.user.id,
-          credits: notes?.credits as string,
-        });
+        const creditsAvailable = await supabase
+          .from("tokens")
+          .select()
+          .eq("user_id", data.user.id)
+          .single();
+
+        if (creditsAvailable.data !== null) {
+          await supabase.from("tokens").insert({
+            user_id: data.user.id,
+            credits: (
+              +creditsAvailable.data.credits + +(notes!.credits as string)
+            ).toString(),
+          });
+        } else {
+          await supabase.from("tokens").insert({
+            user_id: data.user.id,
+            credits: notes?.credits as string,
+          });
+        }
       } else {
         return (
           <div className="overflow-x-hidden">

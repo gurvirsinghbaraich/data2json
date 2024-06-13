@@ -19,27 +19,26 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    const client = createRazorpayClient();
+    const planId = getPlanId(planName);
+
     const existingPlan = await supabase
       .from("subscriptions")
       .select()
       .eq("user_id", data.user.id);
 
-    if (existingPlan.data!.length > 0) {
-      return NextResponse.json(
+    if (existingPlan.data != null && existingPlan.data.length > 0) {
+      const subscription = await client.subscriptions.update(
+        existingPlan.data[0].subscription_id,
         {
-          data: null,
-          error: "Already Subscribed",
-        },
-        {
-          status: 400,
+          plan_id: planId.planId,
         }
       );
+
+      return NextResponse.json({
+        paymentLink: subscription.short_url,
+      });
     }
-
-    const planId = getPlanId(planName);
-
-    // Creating a new subscription
-    const client = createRazorpayClient();
 
     const subscription = await client.subscriptions.create({
       plan_id: planId.planId,
@@ -53,6 +52,7 @@ export async function POST(request: NextRequest) {
 
     await supabase.from("subscriptions").insert({
       user_id: data.user.id,
+      plan: planName,
       subscription_id: subscription.id,
     });
 
@@ -60,7 +60,17 @@ export async function POST(request: NextRequest) {
       paymentLink: subscription.short_url,
     });
   } catch (error) {
-    console.log((error as Error).message);
+    if ((error as any)?.error?.description) {
+      return NextResponse.json(
+        {
+          data: null,
+          error: (error as any)?.error?.description,
+        },
+        {
+          status: 200,
+        }
+      );
+    }
 
     return NextResponse.json(
       {

@@ -58,6 +58,7 @@ export async function emailSignUp(formData: FormData) {
       await supabase.from("subscriptions").insert({
         user_id: data.user.id,
         subscription_id: subscription.id,
+        plan: plan,
       });
 
       revalidatePath("/dashboard", "layout");
