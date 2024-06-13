@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, DetailedHTMLProps, useEffect } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "sonner";
 
-type ButtonProps = DetailedHTMLProps<
+export type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 > & { onPending?: Function };

@@ -4,6 +4,7 @@ import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { FaCog } from "react-icons/fa";
+import { FaFileInvoice } from "react-icons/fa6";
 import { MdDashboard, MdDataUsage } from "react-icons/md";
 import { RiExpandLeftLine, RiExpandRightLine } from "react-icons/ri";
 
@@ -74,6 +75,15 @@ export default function Sidebar({ data }: SidebarProps) {
                 <MdDataUsage fontSize={24} />
                 {!sidebarCollapsed && (
                   <span className="text-[22.4px]">Usage</span>
+                )}
+              </div>
+            </Link>
+
+            <Link href={"/dashboard/plans"}>
+              <div className="w-full text-white flex space-x-[0.35rem] items-center bg-stone-900 hover:bg-stone-800 p-3 rounded">
+                <FaFileInvoice fontSize={24} />
+                {!sidebarCollapsed && (
+                  <span className="text-[22.4px]">Plans</span>
                 )}
               </div>
             </Link>
