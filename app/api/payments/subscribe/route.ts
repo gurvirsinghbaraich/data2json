@@ -1,55 +1,22 @@
+import { getPlanId } from "@/lib/getPlanId";
 import createRazorpayClient from "@/utils/razorpay";
 import { createSupabaseClient } from "@/utils/supabase";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
 import { parse, string } from "valibot";
 
-const getPlanId = (
-  planName: string
-): { planId: string; totalCount: number; credits: number } => {
-  switch (planName) {
-    case "free":
-      return {
-        totalCount: 12,
-        credits: 30000,
-        planId: process.env.FREE_PLAN_ID!,
-      };
-    case "pro":
-      return {
-        totalCount: 52,
-        credits: 100000,
-        planId: process.env.PRO_PLAN_ID!,
-      };
-    case "enterprise":
-      return {
-        totalCount: 12,
-        credits: 2500000,
-        planId: process.env.ENTERPRISE_PLAN_ID!,
-      };
-    default:
-      return {
-        totalCount: 12,
-        credits: 30000,
-        planId: process.env.FREE_PLAN_ID!,
-      };
-  }
-};
-
 export async function POST(request: NextRequest) {
   const supabase = createSupabaseClient();
   const { data } = await supabase.auth.getUser();
 
   try {
+    const jsonPayload = await request.json();
+    const planName = parse(string(), jsonPayload?.plan);
+
     if (!data.user) {
-      return NextResponse.json(
-        {
-          data: null,
-          error: "Unauthenticated",
-        },
-        {
-          status: 401,
-        }
-      );
+      return NextResponse.json({
+        paymentLink: "/sign-up?plan=" + planName,
+      });
     }
 
     const existingPlan = await supabase
@@ -69,8 +36,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const jsonPayload = await request.json();
-    const planName = parse(string(), jsonPayload?.plan);
     const planId = getPlanId(planName);
 
     // Creating a new subscription
@@ -81,16 +46,14 @@ export async function POST(request: NextRequest) {
       total_count: planId.totalCount,
       customer_notify: 1,
       expire_by: moment().add("10", "minutes").unix(),
+      notes: {
+        credits: planId.credits,
+      },
     });
 
     await supabase.from("subscriptions").insert({
       user_id: data.user.id,
       subscription_id: subscription.id,
-    });
-
-    await supabase.from("tokens").insert({
-      user_id: data.user.id,
-      credits: planId.credits.toString(),
     });
 
     return NextResponse.json({

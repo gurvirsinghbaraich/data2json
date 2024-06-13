@@ -7,7 +7,12 @@ import { emailSignUp } from "./actions";
 export default async function SignUpPage({
   searchParams,
 }: {
-  searchParams: { error: string; _email: string; _password: string };
+  searchParams: {
+    error: string;
+    _email: string;
+    _password: string;
+    plan?: string;
+  };
 }) {
   const { data } = await createSupabaseClient().auth.getUser();
 
@@ -62,6 +67,12 @@ export default async function SignUpPage({
             )}
           </div>
         </div>
+
+        {["free", "pro", "enterprise"].includes(
+          searchParams.plan as string
+        ) && (
+          <input type="hidden" name="plan" readOnly value={searchParams.plan} />
+        )}
 
         <SignUpButton />
 

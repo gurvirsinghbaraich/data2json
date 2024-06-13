@@ -13,6 +13,7 @@ export default function PaymentButton({
   ...props
 }: PaymentButtonProps) {
   const fetchApi = async function () {
+    toast.info("Please wait...");
     const request = axios.post(props.link, props.payload, {
       headers: {
         "Content-Type": "application/json",
