@@ -27,6 +27,20 @@ export default async function LandingPage({ searchParams }: LoginPageProps) {
 
   return (
     <div className="max-w-screen h-auto overflow-x-hidden bg-stone-950">
+      <div className="fixed bottom-2.5 left-1/2 -translate-x-1/2 z-[100]">
+        <a
+          href="https://www.producthunt.com/posts/data2json?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-data2json"
+          target="_blank"
+        >
+          <img
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=463024&theme=dark"
+            alt="Data2Json - API&#0032;for&#0032;Developers&#0032;–&#0032;Transform&#0032;Raw&#0032;Data&#0032;into&#0032;Structured&#0032;JSON | Product Hunt"
+            width="220"
+            height="54"
+          />
+        </a>
+      </div>
+
       <div className="w-full max-h-[91px] min-h-[91px] text-white">
         <div className="flex items-center justify-between z-20 bg-stone-950 fixed top-[45.5px] -translate-y-1/2 right-0 left-0 border-b p-[1.4rem] border-stone-700">
           <Link href={"/"}>
