@@ -1,4 +1,5 @@
 import AnalyticsProvider from "@/providers/AnalyticsProvider";
+import ProgressProvider from "@/providers/ProgressProvider";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { Toaster } from "sonner";
@@ -27,8 +28,10 @@ export default function RootLayout({
     <html lang="en">
       <AnalyticsProvider>
         <body className={spaceGrotesk.className}>
-          <Toaster />
-          {children}
+          <ProgressProvider>
+            <Toaster />
+            {children}
+          </ProgressProvider>
         </body>
       </AnalyticsProvider>
     </html>
