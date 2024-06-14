@@ -18,6 +18,7 @@
     "chartjs-plugin-crosshair": "^2.0.0",
     "clsx": "^2.1.1",
     "generate-api-key": "^1.0.2",
+    "graphql-request": "^7.0.1",
     "millify": "^6.1.0",
     "moment": "^2.30.1",
     "next": "14.1.0",
@@ -30,6 +31,7 @@
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "sonner": "^1.5.0",
+    "string-strip-html": "^13.4.8",
     "tailwind-merge": "^2.3.0",
     "valibot": "^0.31.1"
   },
