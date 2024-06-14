@@ -48,9 +48,13 @@ export default async function Blog() {
     <div className="w-full pt-16">
       <h2 className="text-white text-center text-7xl py-12 font-bold">Blog</h2>
 
-      <div className="max-w-7xl mx-auto p-[1.4rem] py-12">
+      <div className="max-w-7xl mx-auto p-[1.4rem] py-12 grid grid-cols-3 gap-6">
         {posts.edges.map((post) => {
-          return <BlogCard post={post.node} key={post.node.slug} />;
+          return (
+            <div key={post.node.slug} className="max-w-7xl">
+              <BlogCard post={post.node} />
+            </div>
+          );
         })}
       </div>
     </div>
