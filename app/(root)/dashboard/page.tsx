@@ -132,5 +132,3 @@ export default async function LandingPage(props: LandingPageProps) {
     </div>
   );
 }
-
-export const dynamic = "force-dynamic";

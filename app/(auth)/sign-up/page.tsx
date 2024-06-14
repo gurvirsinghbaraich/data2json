@@ -88,5 +88,3 @@ export default async function SignUpPage({
     </div>
   );
 }
-
-export const dynamic = "force-dynamic";

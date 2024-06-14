@@ -1,6 +1,44 @@
 import { graphqlClient } from "@/utils/graphql";
 import Image from "next/image";
 
+const GetAllPostsDocument = `
+  query {
+    posts(last: 9) {
+      edges {
+        node{
+          title,
+          slug,
+          excerpt,
+
+          featuredImage {
+            node { 
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+type PostsDocument = {
+  posts: {
+    edges: {
+      node: {
+        title: string;
+        slug: string;
+        excerpt: string;
+
+        featuredImage: {
+          node: {
+            sourceUrl: string;
+          };
+        };
+      };
+    }[];
+  };
+};
+
 const GetPostDocument = `
   query GetPost($slug: String!) {
     postBy(slug: $slug) {
@@ -26,6 +64,16 @@ type PostDocument = {
     content: string;
   };
 };
+
+export async function generateStaticParams() {
+  const { posts }: PostsDocument = await graphqlClient().request(
+    GetAllPostsDocument
+  );
+
+  return posts.edges.map((post) => ({
+    slug: post.node.slug,
+  }));
+}
 
 export default async function PostDetailsPage({
   params,

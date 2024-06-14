@@ -78,5 +78,3 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
     </div>
   );
 }
-
-export const dynamic = "force-dynamic";
