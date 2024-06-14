@@ -37,6 +37,7 @@ jobs:
         echo FREE_PLAN_ID=${{ secrets.FREE_PLAN_ID }} >> .env
         echo PRO_PLAN_ID=${{ secrets.PRO_PLAN_ID }} >> .env
         echo ENTERPRISE_PLAN_ID=${{ secrets.ENTERPRISE_PLAN_ID }} >> .env
+        echo HEADLESS_WORDPRESS_SERVER=${{ secrets.HEADLESS_WORDPRESS_SERVER }} >> .env
 
     - run: npm run build --if-present
 
