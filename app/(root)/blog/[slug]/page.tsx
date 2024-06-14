@@ -1,3 +1,4 @@
+import { getBlogPosts } from "@/lib/getBlogPosts";
 import { graphqlClient } from "@/utils/graphql";
 import Image from "next/image";
 
@@ -66,9 +67,7 @@ type PostDocument = {
 };
 
 export async function generateStaticParams() {
-  const { posts }: PostsDocument = await graphqlClient().request(
-    GetAllPostsDocument
-  );
+  const { posts }: PostsDocument = await getBlogPosts();
 
   return posts.edges.map((post) => ({
     slug: post.node.slug,
